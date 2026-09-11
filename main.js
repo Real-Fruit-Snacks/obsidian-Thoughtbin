@@ -3,7 +3,7 @@
 const obsidian = require('obsidian');
 const {
   Plugin, ItemView, PluginSettingTab, Setting, Modal, Notice, TFile,
-  MarkdownRenderer, Menu, Component, normalizePath, moment, setIcon, debounce, Platform, Keymap,
+  MarkdownRenderer, Menu, Component, normalizePath, moment, setIcon, debounce, Platform, Keymap, TFolder, Vault,
 } = obsidian;
 
 const VIEW_TYPE = 'thoughtbin';
@@ -114,7 +114,11 @@ class MemoStore {
 
   async loadAll() {
     this.memos.clear();
-    const files = this.app.vault.getMarkdownFiles().filter((f) => this.isMemoFile(f));
+    const files = [];
+    const root = this.app.vault.getAbstractFileByPath(this.folder);
+    if (root instanceof TFolder) {
+      Vault.recurseChildren(root, (f) => { if (this.isMemoFile(f)) files.push(f); });
+    }
     await Promise.all(files.map((f) => this.index(f)));
     this.ready = true;
     this.emit();
@@ -957,7 +961,7 @@ class MemosView extends ItemView {
     const header = main.createDiv('memos-header');
     const search = header.createDiv('memos-search');
     setIcon(search.createSpan('memos-search-icon'), 'search');
-    this.searchInput = search.createEl('input', { type: 'text', attr: { placeholder: 'Search thoughts', enterkeyhint: 'search', autocomplete: 'off' } });
+    this.searchInput = search.createEl('input', { type: 'text', cls: 'memos-search-input', attr: { placeholder: 'Search thoughts', enterkeyhint: 'search', autocomplete: 'off' } });
     const clearBtn = search.createEl('button', { cls: 'clickable-icon memos-search-clear', attr: { 'aria-label': 'Clear search' } });
     setIcon(clearBtn, 'x');
     clearBtn.hide();

@@ -2,6 +2,16 @@
 
 All notable changes to Thoughtbin are recorded here. Versions follow [Semantic Versioning](https://semver.org/); each release ships `main.js`, `styles.css` and `manifest.json` on the [Releases](https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases) page.
 
+## [1.2.3] - 2026-09-11
+
+### Changed
+- Stylesheet no longer uses `!important`; removed partially supported CSS features flagged by the Obsidian review.
+- Startup indexing walks the Thoughtbin folder instead of enumerating the whole vault.
+- Release assets now ship with GitHub artifact attestations.
+
+### Fixed
+- `authorUrl` in the manifest points to the author profile rather than the plugin repository.
+
 ## [1.2.2] - 2026-09-11
 
 ### Fixed
@@ -43,6 +53,7 @@ All notable changes to Thoughtbin are recorded here. Versions follow [Semantic V
 ### Added
 - First public release: timeline view with composer, tags, pins, archive, task toggling, attachments, search, activity calendar, quick capture and settings.
 
+[1.2.3]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.3
 [1.2.2]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.2
 [1.2.1]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.1
 [1.2.0]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.0
