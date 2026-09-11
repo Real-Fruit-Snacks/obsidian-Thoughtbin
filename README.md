@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://real-fruit-snacks.github.io/obsidian-Thoughtbin/"><img src="docs/assets/banner.png" alt="Thoughtbin — your thoughts, one line at a time" width="100%"></a>
+</p>
+
 # Thoughtbin
 
 A private timeline for quick thoughts, inside your Obsidian vault.
