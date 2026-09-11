@@ -1,7 +1,7 @@
 {
   "id": "thoughtbin",
   "name": "Thoughtbin",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "minAppVersion": "1.4.0",
   "description": "A private timeline for quick thoughts inside your vault: quick capture, tags, pins, archive, task toggling, attachments, search and an activity calendar.",
   "author": "Real-Fruit-Snacks",

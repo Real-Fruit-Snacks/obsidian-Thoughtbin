@@ -2,6 +2,12 @@
 
 All notable changes to Thoughtbin are recorded here. Versions follow [Semantic Versioning](https://semver.org/); each release ships `main.js`, `styles.css` and `manifest.json` on the [Releases](https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases) page.
 
+## [1.2.1] - 2026-09-11
+
+### Changed
+- Activity calendar and pinned cards now follow the theme's accent colour instead of fixed green and yellow.
+- Sidebar stat labels pluralise correctly ("1 day", "2 days").
+
 ## [1.2.0] - 2026-09-11
 
 ### Added
@@ -32,6 +38,7 @@ All notable changes to Thoughtbin are recorded here. Versions follow [Semantic V
 ### Added
 - First public release: timeline view with composer, tags, pins, archive, task toggling, attachments, search, activity calendar, quick capture and settings.
 
+[1.2.1]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.1
 [1.2.0]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.0
 [1.1.1]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.1.1
 [1.1.0]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.1.0
