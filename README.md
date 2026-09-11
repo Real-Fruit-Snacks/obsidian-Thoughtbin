@@ -4,7 +4,9 @@ A private timeline for quick thoughts, inside your Obsidian vault.
 
 Open it, type, save, move on. No title, no folder decision, no template to fill in. Every thought is a plain Markdown note, so it syncs, links, searches and graphs like everything else in your vault — Thoughtbin just gives you a fast, feed-style way to capture and revisit them.
 
-Inspired by [Memos](https://usememos.com/).
+Inspired by [Memos](https://usememos.com/). Project site: [real-fruit-snacks.github.io/obsidian-Thoughtbin](https://real-fruit-snacks.github.io/obsidian-Thoughtbin/)
+
+![Thoughtbin on desktop: composer, timeline and calendar sidebar](docs/assets/screenshot-desktop.png)
 
 ## Features
 
@@ -33,6 +35,12 @@ Inspired by [Memos](https://usememos.com/).
 **Desktop and mobile**
 - Desktop: sidebar sits beside the timeline in the same pane (toggle with the panel button); open in the main area or either side panel
 - Mobile: single column with a horizontal tag strip, and the sidebar slides out as a drawer
+
+<p align="center">
+  <img src="docs/assets/screenshot-mobile.png" alt="Thoughtbin on a phone with the tag strip" width="300">
+  &nbsp;&nbsp;
+  <img src="docs/assets/screenshot-mobile-drawer.png" alt="The sidebar drawer on a phone" width="300">
+</p>
 
 ## How thoughts are stored
 
