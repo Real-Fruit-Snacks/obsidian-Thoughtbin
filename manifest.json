@@ -1,9 +1,10 @@
 {
   "id": "thoughtbin",
   "name": "Thoughtbin",
-  "version": "1.1.0",
-  "minAppVersion": "0.15.0",
-  "description": "A lightweight, privacy-first microblogging feed inspired by usememos.com.",
+  "version": "1.2.0",
+  "minAppVersion": "1.4.0",
+  "description": "A private timeline for quick thoughts inside your vault: quick capture, tags, pins, archive, task toggling, attachments, search and an activity calendar.",
   "author": "Real-Fruit-Snacks",
+  "authorUrl": "https://github.com/Real-Fruit-Snacks",
   "isDesktopOnly": false
 }
