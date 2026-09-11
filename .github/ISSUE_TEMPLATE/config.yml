@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/discussions
+    about: Not sure it's a bug? Start a discussion instead.
