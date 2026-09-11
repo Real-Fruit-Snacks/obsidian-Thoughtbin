@@ -1124,9 +1124,10 @@ class MemosView extends ItemView {
       s.createDiv({ cls: 'memos-stat-n', text: String(n) });
       s.createDiv({ cls: 'memos-stat-l', text: label });
     };
-    stat(memos.length, 'thoughts');
-    stat(this.store.tagCounts(false).length, 'tags');
-    stat(days.size, 'days');
+    const tagN = this.store.tagCounts(false).length;
+    stat(memos.length, memos.length === 1 ? 'thought' : 'thoughts');
+    stat(tagN, tagN === 1 ? 'tag' : 'tags');
+    stat(days.size, days.size === 1 ? 'day' : 'days');
 
     // Tags
     const tagsBox = el.createDiv('memos-tags');

@@ -22,10 +22,16 @@ All notable changes to Thoughtbin are recorded here. Versions follow [Semantic V
 ### Removed
 - "Show sidebar by default" setting (replaced by the per-platform behaviour above).
 
-## [1.0.0] - 2026-09-11
+## [1.1.1] - 2026-09-11
+
+### Fixed
+- Release workflow tag trigger so releases match Obsidian's plugin requirements.
+
+## [1.1.0] - 2026-09-11
 
 ### Added
-- First release: timeline view with composer, tags, pins, archive, task toggling, attachments, search, activity calendar, quick capture and settings.
+- First public release: timeline view with composer, tags, pins, archive, task toggling, attachments, search, activity calendar, quick capture and settings.
 
 [1.2.0]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.0
-[1.0.0]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.0.0
+[1.1.1]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.1.1
+[1.1.0]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.1.0
