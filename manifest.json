@@ -5,6 +5,6 @@
   "minAppVersion": "1.4.0",
   "description": "A private timeline for quick thoughts inside your vault: quick capture, tags, pins, archive, task toggling, attachments, search and an activity calendar.",
   "author": "Real-Fruit-Snacks",
-  "authorUrl": "https://github.com/Real-Fruit-Snacks",
+  "authorUrl": "https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin",
   "isDesktopOnly": false
 }
