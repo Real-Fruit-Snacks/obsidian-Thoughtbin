@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thoughtbin — a private timeline for quick thoughts in Obsidian</title>
+<meta name="description" content="Thoughtbin is a Memos-style timeline inside Obsidian. Type a thought, save it, and it's a plain Markdown note in your vault with tags, pins, checkboxes and search.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Thoughtbin for Obsidian">
+<meta property="og:description" content="Your thoughts, one line at a time. A private, Memos-style timeline inside your vault.">
+<meta property="og:image" content="https://real-fruit-snacks.github.io/obsidian-Thoughtbin/assets/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/rfs.css">
+<style>:root{ --accent:#7C9CFF; --accent-2:#B48CFF; }</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-header">
+    <a class="owner" href="https://github.com/Real-Fruit-Snacks"><i></i>Real-Fruit-Snacks</a>
+    <span class="crumb">/</span><span class="proj">Thoughtbin</span>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="#settings">Settings</a>
+      <a href="changelog.html">Changelog</a>
+      <a class="gh" href="https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="pill"><b>New</b> 1.2.0 — live-styled composer and wikilink autocomplete</div>
+    <h1>Your thoughts, one line at a time.</h1>
+    <p class="lede">Thoughtbin is a Memos-style timeline inside Obsidian. Type, save, and it's a plain Markdown note in your vault — with tags, pins, checkboxes and search on top.</p>
+    <div class="actions">
+      <a class="btn primary" href="#install">Install Thoughtbin</a>
+      <a class="btn secondary" href="https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin">View source</a>
+    </div>
+
+    <div class="frame" aria-hidden="true"><div class="screen">
+      <div class="sb"><b>September 2026</b>
+        <div class="cal"><i></i><i></i><i class="h"></i><i></i><i class="hh"></i><i></i><i></i><i class="h"></i><i></i><i></i><i class="hh"></i><i class="h"></i><i></i><i></i><i></i><i class="h"></i><i></i><i></i><i></i><i></i><i class="h"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <b>Tags</b>#dev 7<br>#books 5<br>#homelab 4
+      </div>
+      <div class="main">
+        <div class="comp">What's on your mind…<b>Save</b></div>
+        <div class="card"><small>22 minutes ago</small><p>Started Cal Newport's Deep Work this week. <span class="t">#books</span></p></div>
+        <div class="card"><small>Yesterday</small><p>☑ Return library books &nbsp; ☐ Replace brake pads &nbsp; ☐ Back up the NAS <span class="t">#homelab</span></p></div>
+        <div class="card"><small>Sep 8 · pinned</small><p><code>sudo lsof -i :5230</code> — which process holds the port <span class="t">#dev</span></p></div>
+      </div>
+    </div></div>
+  </div>
+
+  <section id="features">
+    <h2>Fast to capture, easy to find again</h2>
+    <p class="sub">The timeline is the whole interface. Everything else is Obsidian doing what it already does.</p>
+    <div class="grid">
+      <div class="f"><div class="ic">Aa</div><h3>Live-styled composer</h3><p>Headings, lists, checkboxes, code and links render as you type. <code>[[</code> and <code>#</code> autocomplete from your vault; <kbd>Ctrl</kbd>+<kbd>B</kbd>, <kbd>I</kbd> and <kbd>K</kbd> work.</p></div>
+      <div class="f"><div class="ic">▣</div><h3>Rendered cards</h3><p>Obsidian's own renderer, so embeds, callouts, math and Mermaid all work. Tick checkboxes and open links right in the card.</p></div>
+      <div class="f"><div class="ic">#</div><h3>Tags, pins, archive</h3><p>Click a tag to filter. Pin the ones you keep reaching for. Archive the rest without deleting anything.</p></div>
+      <div class="f"><div class="ic">▦</div><h3>Activity calendar</h3><p>A month view shaded by how much you wrote. Click a day to see just those thoughts.</p></div>
+      <div class="f"><div class="ic">⎘</div><h3>Attachments</h3><p>Paste or drop images and files; they're saved to your vault and embedded in the thought.</p></div>
+      <div class="f"><div class="ic">⌘</div><h3>Capture from anywhere</h3><p>A quick-capture popup, a "save selection as thought" command, and a hotkey that jumps straight to the composer.</p></div>
+    </div>
+  </section>
+
+  <section id="screenshots">
+    <h2>Desktop and mobile</h2>
+    <p class="sub">The sidebar sits beside the timeline on desktop. On phones it slides in from the left and tags become a strip above the feed.</p>
+    <div class="shots">
+      <figure><img src="assets/screenshot-desktop.png" alt="Thoughtbin on desktop: composer, timeline and calendar sidebar" loading="lazy"><figcaption>Desktop, in the main area</figcaption></figure>
+      <figure><img src="assets/screenshot-mobile.png" alt="Thoughtbin on a phone with the tag strip" loading="lazy"><figcaption>Mobile</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="two">
+      <div>
+        <h2>Install in a minute</h2>
+        <p class="sub">Three files and a toggle. No build step, no account, no network.</p>
+        <ol class="steps">
+          <li><b>Download</b> <code>main.js</code>, <code>styles.css</code> and <code>manifest.json</code> from the <a href="https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/latest">latest release</a>.</li>
+          <li><b>Copy</b> them into <code>.obsidian/plugins/thoughtbin/</code> inside your vault.</li>
+          <li><b>Enable</b> Thoughtbin under Settings → Community plugins.</li>
+        </ol>
+        <div class="callout"><b>Prefer automatic updates?</b> Add <code>Real-Fruit-Snacks/obsidian-Thoughtbin</code> in BRAT.</div>
+      </div>
+      <div>
+        <p class="sub" style="text-align:left;margin-bottom:10px">Each thought is one Markdown file in the folder you choose:</p>
+<pre><code>---
+created: 2026-09-11T12:50:03-05:00
+updated: 2026-09-11T12:50:03-05:00
+pinned: true
+archived: false
+---
+Find which process is holding a port:
+
+```bash
+sudo lsof -i :5230
+```
+
+Pinning this so I stop searching for it. #dev #cheatsheet</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="settings">
+    <h2>Settings and commands</h2>
+    <p class="sub">Grouped under Storage, Composer, Timeline and Layout in Obsidian's settings.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Setting</th><th>What it does</th></tr>
+        <tr><td>Thoughtbin folder</td><td>Where thoughts are stored. Default <code>Thoughtbin/</code>.</td></tr>
+        <tr><td>Attachments folder</td><td>Where pasted or dropped files go. Default <code>Thoughtbin/attachments/</code>.</td></tr>
+        <tr><td>Default code block language</td><td>Inserted after the opening ``` when you use the code button.</td></tr>
+        <tr><td>Save with Enter</td><td>Enter saves and Shift+Enter adds a line. Off: Ctrl/Cmd+Enter saves.</td></tr>
+        <tr><td>Composer template</td><td>Text pre-filled for every new thought, e.g. <code>#inbox</code>.</td></tr>
+        <tr><td>Sort order, pinned on top</td><td>Newest or oldest first; keep pinned thoughts at the top.</td></tr>
+        <tr><td>Time display, date format</td><td>Relative ("3 hours ago") or absolute, with a custom format.</td></tr>
+        <tr><td>Collapse long thoughts</td><td>Maximum height before a "Show more" button appears.</td></tr>
+        <tr><td>Open timeline in</td><td>Main area, or the left or right side panel.</td></tr>
+      </table>
+    </div>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <tr><th>Command</th><th>What it does</th></tr>
+        <tr><td>Open timeline</td><td>Opens or reveals the Thoughtbin view.</td></tr>
+        <tr><td>Quick capture</td><td>Popup composer that saves a new thought.</td></tr>
+        <tr><td>Save selection as thought</td><td>Saves the current editor selection as a thought.</td></tr>
+        <tr><td>Focus composer</td><td>Opens the timeline and puts the cursor in the composer.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>More from Real-Fruit-Snacks</h2>
+    <p class="sub">Same site, a different glow per project.</p>
+    <div class="proj">
+      <a href="#" aria-current="page"><i style="background:#7C9CFF"></i><b>Thoughtbin</b><span>Obsidian plugin</span></a>
+      <a href="https://github.com/Real-Fruit-Snacks"><i style="background:#5AC8A8"></i><b>More on GitHub</b><span>Everything else lives here for now</span></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>Thoughtbin by <a href="https://github.com/Real-Fruit-Snacks">Real-Fruit-Snacks</a> · MIT</span>
+    <span>Inspired by <a href="https://usememos.com">Memos</a></span>
+  </footer>
+</div>
+</body>
+</html>
