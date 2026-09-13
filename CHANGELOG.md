@@ -2,6 +2,14 @@
 
 All notable changes to Thoughtbin are recorded here. Versions follow [Semantic Versioning](https://semver.org/); each release ships `main.js`, `styles.css` and `manifest.json` on the [Releases](https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases) page.
 
+## [1.2.4] - 2026-09-13
+
+### Changed
+- Deleting a thought always goes through `app.fileManager.trashFile`, so the vault's trash setting is respected.
+- Italic detection in the composer no longer uses regex lookbehind (unsupported on some iOS versions).
+- Composer autosize and collapsed thoughts set their heights through CSS variables instead of inline styles; DOM nodes are created with `createEl`; timers use `window.setTimeout`.
+- Manifest description no longer contains a colon; "markdown" → "Markdown" in a setting description; LICENSE years updated.
+
 ## [1.2.3] - 2026-09-11
 
 ### Changed
@@ -53,6 +61,7 @@ All notable changes to Thoughtbin are recorded here. Versions follow [Semantic V
 ### Added
 - First public release: timeline view with composer, tags, pins, archive, task toggling, attachments, search, activity calendar, quick capture and settings.
 
+[1.2.4]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.4
 [1.2.3]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.3
 [1.2.2]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.2
 [1.2.1]: https://github.com/Real-Fruit-Snacks/obsidian-Thoughtbin/releases/tag/1.2.1

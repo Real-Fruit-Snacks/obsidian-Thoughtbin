@@ -221,8 +221,7 @@ class MemoStore {
   }
 
   async delete(memo) {
-    if (this.app.fileManager.trashFile) await this.app.fileManager.trashFile(memo.file);
-    else await this.app.vault.trash(memo.file, true);
+    await this.app.fileManager.trashFile(memo.file);
     this.remove(memo.path);
     this.emit();
   }
@@ -266,9 +265,8 @@ function liveMarkdownExtension() {
     constructor(pos, checked) { super(); this.pos = pos; this.checked = checked; }
     eq(o) { return o.checked === this.checked && o.pos === this.pos; }
     toDOM(view) {
-      const wrap = document.createElement('span');
-      wrap.className = 'tb-checkbox';
-      const cb = document.createElement('input');
+      const wrap = createEl('span', { cls: 'tb-checkbox' });
+      const cb = createEl('input');
       cb.type = 'checkbox';
       cb.checked = this.checked;
       cb.addEventListener('mousedown', (e) => e.preventDefault());
@@ -285,7 +283,7 @@ function liveMarkdownExtension() {
   class TextWidget extends WidgetType {
     constructor(text, cls) { super(); this.text = text; this.cls = cls; }
     eq(o) { return o.text === this.text && o.cls === this.cls; }
-    toDOM() { const s = document.createElement('span'); s.className = this.cls; s.textContent = this.text; return s; }
+    toDOM() { return createEl('span', { cls: this.cls, text: this.text }); }
   }
 
   const mark = (cls) => Decoration.mark({ class: cls });
@@ -298,8 +296,9 @@ function liveMarkdownExtension() {
     { re: /__[^_\n]+__/g, cls: 'tb-bold', m: 2 },
     { re: /~~[^~\n]+~~/g, cls: 'tb-strike', m: 2 },
     { re: /==[^=\n]+==/g, cls: 'tb-highlight', m: 2 },
-    { re: /(?<![*\w])\*[^*\n]+\*(?!\*)/g, cls: 'tb-italic', m: 1 },
-    { re: /(?<![_\w])_[^_\n]+_(?![_\w])/g, cls: 'tb-italic', m: 1 },
+    // no lookbehind (unsupported on some iOS versions): the lead group is skipped when placing the decoration
+    { re: /(^|[^*\w])(\*[^*\n]+\*)(?!\*)/g, cls: 'tb-italic', m: 1, lead: true },
+    { re: /(^|[^_\w])(_[^_\n]+_)(?![_\w])/g, cls: 'tb-italic', m: 1, lead: true },
   ];
   const TAG = /(?:^|[\s(\[])(#[\p{L}\p{N}_\/-]+)/gu;
   const WIKILINK = /!?\[\[[^\]\n]+\]\]/g;
@@ -370,7 +369,7 @@ function liveMarkdownExtension() {
       for (const spec of INLINE) {
         spec.re.lastIndex = 0;
         while ((m = spec.re.exec(text))) {
-          const a = m.index, b = a + m[0].length;
+          const a = m.index + (spec.lead ? m[1].length : 0), b = m.index + m[0].length;
           if (overlaps(a, b)) continue;
           if (spec.code) skip.push([a, b]);
           add(a, b, mark(spec.cls));
@@ -606,7 +605,7 @@ class MemoEditor {
       },
       dragover: (e) => { this.el.addClass('is-dragover'); return false; },
       dragleave: () => { this.el.removeClass('is-dragover'); return false; },
-      blur: () => { setTimeout(() => this.hideSuggest(), 150); return false; },
+      blur: () => { window.setTimeout(() => this.hideSuggest(), 150); return false; },
     });
 
     const updateListener = EditorView.updateListener.of((u) => {
@@ -644,7 +643,7 @@ class MemoEditor {
     });
     this.textarea.value = this.opts.initial || '';
     const ta = this.textarea;
-    const resize = () => { ta.style.height = 'auto'; ta.style.height = Math.min(Math.max(ta.scrollHeight, 72), 480) + 'px'; };
+    const resize = () => { ta.style.removeProperty('height'); ta.setCssProps({ height: Math.min(Math.max(ta.scrollHeight, 72), 480) + 'px' }); };
     this.resize = resize;
     ta.addEventListener('input', () => { resize(); this.updateSuggest(); });
     ta.addEventListener('click', () => this.updateSuggest());
@@ -658,7 +657,7 @@ class MemoEditor {
       if (e.key === 'Enter' && (e.metaKey || e.ctrlKey || (this.plugin.settings.saveWithEnter && !e.shiftKey))) { e.preventDefault(); this.save(); return; }
       if (e.key === 'Escape' && this.opts.onCancel) { e.preventDefault(); this.opts.onCancel(); }
     });
-    ta.addEventListener('blur', () => setTimeout(() => this.hideSuggest(), 150));
+    ta.addEventListener('blur', () => window.setTimeout(() => this.hideSuggest(), 150));
     ta.addEventListener('paste', (e) => {
       const files = e.clipboardData && e.clipboardData.files;
       if (files && files.length) { e.preventDefault(); this.handleFiles(files); }
@@ -1037,7 +1036,7 @@ class MemosView extends ItemView {
     };
     if (immediate) { finish(); return; }
     overlay.removeClass('is-open');
-    setTimeout(finish, 240);
+    window.setTimeout(finish, 240);
   }
 
   unloadCards() {
@@ -1294,13 +1293,12 @@ class MemosView extends ItemView {
       content.querySelectorAll('input.task-list-item-checkbox').forEach((cb) => { cb.disabled = false; });
       const max = this.plugin.settings.collapseLongThoughts;
       if (max > 0 && content.scrollHeight > max + 40) {
+        content.setCssProps({ '--tb-collapse-max': max + 'px' });
         content.addClass('is-collapsed');
-        content.style.maxHeight = max + 'px';
         const more = card.createEl('button', { cls: 'memo-expand', text: 'Show more' });
         more.addEventListener('click', () => {
           const open = content.hasClass('is-collapsed');
           content.toggleClass('is-collapsed', !open);
-          content.style.maxHeight = open ? '' : max + 'px';
           more.setText(open ? 'Show less' : 'Show more');
         });
       }
@@ -1416,7 +1414,7 @@ class MemosSettingTab extends PluginSettingTab {
     new Setting(containerEl).setName('Storage').setHeading();
 
     new Setting(containerEl).setName('Thoughtbin folder')
-      .setDesc('Each thought is stored as its own markdown note in this folder.')
+      .setDesc('Each thought is stored as its own Markdown note in this folder.')
       .addText((t) => t.setPlaceholder('Thoughtbin').setValue(s.memosFolder).onChange(async (v) => {
         s.memosFolder = v.trim() || 'Thoughtbin';
         await save();

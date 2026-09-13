@@ -409,7 +409,7 @@
   font-size: var(--tag-size);
 }
 .memo-content .task-list-item-checkbox { cursor: pointer; }
-.memo-content.is-collapsed { overflow: hidden; position: relative; }
+.memo-content.is-collapsed { overflow: hidden; position: relative; max-height: var(--tb-collapse-max, none); }
 .memo-content.is-collapsed::after {
   content: '';
   position: absolute;
